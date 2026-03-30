@@ -1,0 +1,79 @@
+# ============================================
+# AI Course Planner RAG - Configuration
+# ============================================
+
+project:
+  name: "AI Course Planner RAG"
+  version: "1.0.0"
+  description: "Agentic RAG Course Planning Assistant for KUK University"
+
+# Data paths
+data:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  evaluation_dir: "data/evaluation"
+
+# RAG Pipeline Configuration
+rag:
+  chunk_size: 1000
+  chunk_overlap: 200
+  min_chunk_length: 50
+  max_chunk_length: 2000
+
+# Retriever Configuration
+retriever:
+  top_k: 8
+  similarity_metric: "cosine"
+  score_threshold: 0.3
+  rerank: false
+
+# Vector Store
+vector_store:
+  type: "chroma"
+  persist_directory: "vectorstore/chroma_db"
+  collection_name: "kuk_course_catalog"
+
+# Embedding Model
+embedding:
+  model_name: "all-MiniLM-L6-v2"
+  device: "cpu"
+  batch_size: 64
+
+# LLM Configuration
+llm:
+  provider: "groq"
+  model_name: "llama-3.3-70b-versatile"
+  temperature: 0.1
+  max_tokens: 4096
+  top_p: 0.9
+  request_timeout: 60
+
+# CrewAI Configuration
+crew:
+  verbose: true
+  process: "sequential"
+  max_iterations: 10
+
+# Streamlit UI
+ui:
+  title: "🎓 KUK Course Planning Assistant"
+  page_icon: "🎓"
+  layout: "wide"
+  sidebar_state: "expanded"
+
+# Logging
+logging:
+  level: "INFO"
+  format: "{time} | {level} | {message}"
+  file: "logs/app.log"
+
+# Source Documentation
+sources:
+  - name: "KUK Academic Handbook 2025"
+    file: "kuk_handbook_2025.pdf"
+    description: "Complete academic handbook with course descriptions, prerequisites, degree requirements"
+    date_accessed: "2026-03-30"
+  - name: "KUK Prospectus"
+    file: "kuk_prospectus_2011.pdf"
+    description: "University prospectus with program structure, admission requirements, academic policies"
+    date_accessed: "2026-03-30"
