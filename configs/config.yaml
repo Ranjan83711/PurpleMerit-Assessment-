@@ -1,0 +1,54 @@
+# =============================================
+# AI Course Planner RAG - Configuration
+# =============================================
+
+# LLM Settings
+llm:
+  provider: groq
+  model: llama-3.3-70b-versatile   # Fast + capable free model
+  temperature: 0.1                  # Low temp for factual grounding
+  max_tokens: 2048
+  fallback_model: llama3-8b-8192   # Fallback if rate limited
+
+# Embedding Settings
+embeddings:
+  model: all-MiniLM-L6-v2          # Fast, good quality, free
+  device: cpu
+  batch_size: 32
+
+# Chunking Strategy
+chunking:
+  chunk_size: 800                   # ~200 tokens; keeps course descriptions intact
+  chunk_overlap: 150                # 18% overlap prevents boundary cuts
+  separators:
+    - "\n\n"
+    - "\n"
+    - ". "
+    - " "
+  strategy: recursive               # RecursiveCharacterTextSplitter
+
+# Vector Store
+vector_store:
+  type: chroma
+  persist_directory: vectorstore/chroma_db
+  collection_name: kuk_course_catalog
+  distance_metric: cosine
+
+# Retriever
+retriever:
+  k: 6                              # Top-6 chunks per query
+  score_threshold: 0.3              # Min similarity score
+  search_type: similarity
+
+# RAG Behavior
+rag:
+  citation_required: true
+  abstain_if_no_evidence: true
+  min_evidence_chunks: 1
+  max_clarifying_questions: 5
+
+# Evaluation
+evaluation:
+  test_queries_path: data/evaluation/test_queries.json
+  expected_outputs_path: data/evaluation/expected_outputs.json
+  output_path: data/evaluation/eval_results.json

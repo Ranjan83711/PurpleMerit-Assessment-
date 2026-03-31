@@ -1,0 +1,177 @@
+[
+  {
+    "id": "EQ01",
+    "type": "prerequisite_check",
+    "query": "I have completed Mathematics-I. Am I eligible to enroll in Mathematics-II?",
+    "expected_decision": "ELIGIBLE",
+    "notes": "Standard sequential prerequisite check"
+  },
+  {
+    "id": "EQ02",
+    "type": "prerequisite_check",
+    "query": "Can I take Applied Mathematics if I have only completed English Communication?",
+    "expected_decision": "NOT ELIGIBLE",
+    "notes": "Missing math prerequisite"
+  },
+  {
+    "id": "EQ03",
+    "type": "prerequisite_check",
+    "query": "I completed Physics-I with grade B. Can I enroll in Physics-II?",
+    "expected_decision": "ELIGIBLE",
+    "notes": "Grade-aware prerequisite check"
+  },
+  {
+    "id": "EQ04",
+    "type": "prerequisite_check",
+    "query": "Can I take Computer Networks if I have not completed any prior courses?",
+    "expected_decision": "NOT ELIGIBLE",
+    "notes": "No prerequisites completed"
+  },
+  {
+    "id": "EQ05",
+    "type": "prerequisite_check",
+    "query": "I completed Engineering Drawing and Workshop Practice. Am I eligible for Manufacturing Processes?",
+    "expected_decision": "ELIGIBLE",
+    "notes": "Multiple prerequisites check"
+  },
+  {
+    "id": "EQ06",
+    "type": "prerequisite_check",
+    "query": "Can I take Digital Electronics without completing Analog Electronics first?",
+    "expected_decision": "NOT ELIGIBLE",
+    "notes": "Hard prerequisite chain"
+  },
+  {
+    "id": "EQ07",
+    "type": "prerequisite_check",
+    "query": "I completed both Mechanics and Thermodynamics. Am I eligible for Fluid Mechanics?",
+    "expected_decision": "ELIGIBLE",
+    "notes": "Both prerequisites satisfied"
+  },
+  {
+    "id": "EQ08",
+    "type": "prerequisite_check",
+    "query": "Can I take Advanced Programming if I only completed Introduction to Programming?",
+    "expected_decision": "NEED MORE INFO",
+    "notes": "May depend on grade requirement"
+  },
+  {
+    "id": "EQ09",
+    "type": "prerequisite_check",
+    "query": "I failed Mathematics-I (grade F). Can I enroll in Mathematics-II?",
+    "expected_decision": "NOT ELIGIBLE",
+    "notes": "Grade F fails prerequisite"
+  },
+  {
+    "id": "EQ10",
+    "type": "prerequisite_check",
+    "query": "Am I eligible to take the final year project course if I am in 3rd year?",
+    "expected_decision": "NEED MORE INFO",
+    "notes": "Requires year/credits completed info"
+  },
+  {
+    "id": "CQ01",
+    "type": "prerequisite_chain",
+    "query": "What is the full prerequisite chain to take Microprocessors and Interfaces?",
+    "expected_decision": "CHAIN_ANALYSIS",
+    "notes": "Multi-hop: likely requires Digital Electronics → Analog Electronics → Physics"
+  },
+  {
+    "id": "CQ02",
+    "type": "prerequisite_chain",
+    "query": "I completed only Mathematics-I and Physics-I (1st year). What is the earliest I can take Control Systems?",
+    "expected_decision": "CHAIN_ANALYSIS",
+    "notes": "Requires tracing full chain from 1st year"
+  },
+  {
+    "id": "CQ03",
+    "type": "prerequisite_chain",
+    "query": "What courses must I complete before I can take VLSI Design?",
+    "expected_decision": "CHAIN_ANALYSIS",
+    "notes": "Deep chain: VLSI requires microelectronics which requires electronics basics"
+  },
+  {
+    "id": "CQ04",
+    "type": "prerequisite_chain",
+    "query": "Can a student who has only completed 1st year courses take Software Engineering?",
+    "expected_decision": "NOT ELIGIBLE",
+    "notes": "Software Engineering typically requires 2nd year CS courses"
+  },
+  {
+    "id": "CQ05",
+    "type": "prerequisite_chain",
+    "query": "What is the prerequisite chain for Advanced Database Management Systems?",
+    "expected_decision": "CHAIN_ANALYSIS",
+    "notes": "Chain: Intro Programming → Data Structures → DBMS → Advanced DBMS"
+  },
+  {
+    "id": "PR01",
+    "type": "program_requirement",
+    "query": "How many total credits are required to complete the B.Tech program?",
+    "expected_decision": "FACTUAL_ANSWER",
+    "notes": "Credit requirement lookup"
+  },
+  {
+    "id": "PR02",
+    "type": "program_requirement",
+    "query": "What are the elective courses available in the 4th year B.Tech program?",
+    "expected_decision": "FACTUAL_ANSWER",
+    "notes": "Elective catalog lookup"
+  },
+  {
+    "id": "PR03",
+    "type": "program_requirement",
+    "query": "What is the minimum attendance requirement to appear in university examinations?",
+    "expected_decision": "FACTUAL_ANSWER",
+    "notes": "Academic policy lookup"
+  },
+  {
+    "id": "PR04",
+    "type": "program_requirement",
+    "query": "How many lab practicals are required per semester in the B.Tech program?",
+    "expected_decision": "FACTUAL_ANSWER",
+    "notes": "Program structure query"
+  },
+  {
+    "id": "PR05",
+    "type": "program_requirement",
+    "query": "What is the grading scheme used at Kurukshetra University for B.Tech?",
+    "expected_decision": "FACTUAL_ANSWER",
+    "notes": "Grading policy query"
+  },
+  {
+    "id": "NI01",
+    "type": "not_in_docs",
+    "query": "Which professor teaches Digital Signal Processing this semester?",
+    "expected_decision": "ABSTAIN",
+    "notes": "Faculty assignment not in catalog"
+  },
+  {
+    "id": "NI02",
+    "type": "not_in_docs",
+    "query": "Is Microprocessors being offered in Spring 2026?",
+    "expected_decision": "ABSTAIN",
+    "notes": "Semester availability not in catalog"
+  },
+  {
+    "id": "NI03",
+    "type": "not_in_docs",
+    "query": "Can I get an exception to take Advanced Mathematics without completing Mathematics-II if I explain my situation?",
+    "expected_decision": "ABSTAIN",
+    "notes": "Exception approval is not in catalog - requires advisor"
+  },
+  {
+    "id": "NI04",
+    "type": "not_in_docs",
+    "query": "What time does the Computer Networks lab class meet on Tuesdays?",
+    "expected_decision": "ABSTAIN",
+    "notes": "Schedule/timetable not in catalog"
+  },
+  {
+    "id": "NI05",
+    "type": "not_in_docs",
+    "query": "What is the fee structure for the B.Tech program for 2026-27 academic year?",
+    "expected_decision": "ABSTAIN",
+    "notes": "Fee structure for future year not in catalog"
+  }
+]
